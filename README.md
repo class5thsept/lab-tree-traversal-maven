@@ -4,8 +4,8 @@ The latest version of the CSC-207 lab on tree traversal, now with Maven.
 
 Authors
 
-* Your name here
-* Your name here
+* Leonardo Alves Nunes
+* Natalie Nardone
 * Samuel A. Rebelsky
 
 Acknowledgements
@@ -14,4 +14,4 @@ Acknowledgements
 *
 *
 
-This code may be found at <URL>. The original code may be found at <https://github.com/Grinnell-CSC207/lab-tree-traversal-maven>.
+This code may be found at <https://github.com/class5thsept/lab-tree-traversal-maven>. The original code may be found at <https://github.com/Grinnell-CSC207/lab-tree-traversal-maven>.
