@@ -2,6 +2,7 @@ package edu.grinnell.csc207.util;
 
 import java.io.PrintWriter;
 import java.util.Iterator;
+import java.util.Stack;
 
 /**
  * Simple binary trees.
@@ -85,6 +86,79 @@ public class BinaryTree<T> implements Iterable<T> {
       } // next()
     }; // new Iterator()
   } // iterator()
+
+  /**
+   * Prints the elements of the tree in pre-order left to right depth-first traversal.
+   * @param pen
+   */
+  public void elements01(PrintWriter pen) {
+    this.elements01helper(pen, root);
+  } // elements01(PrintWriter)
+
+  public void elements01helper(PrintWriter pen, BinaryTreeNode<T> cur) {
+    if (cur == null) {
+      pen.println("");
+    } else {
+      pen.println(cur);
+      this.elements01helper(pen, cur.left);
+      this.elements01helper(pen, cur.right);
+    }
+  }
+
+  /**
+   * Prints the elements of the tree in pre-order left to right depth-first traversal.
+   * @param pen
+   */
+  public void elements02(PrintWriter pen) {
+    this.elements02helper(pen, root);
+  } // elements02(PrintWriter)
+
+  public void elements02helper(PrintWriter pen, BinaryTreeNode<T> cur) {
+    if (cur == null) {
+      pen.println("");
+    } else {
+      this.elements01helper(pen, cur.left);
+      pen.println(cur);
+      this.elements01helper(pen, cur.right);
+    }
+  }
+
+  /**
+ * Print all of the elements in some order or other.
+ * 
+ * Note: We are trying to avoid recursion.
+ */
+public void print(PrintWriter pen) {
+  // A collection of the remaining things to print
+  Stack<Object> remaining = new Stack<Object>();
+  remaining.push(this.root);
+  // Invariants: 
+  //   remaining only contains Strings or Nodes
+  //   All values in the tree are either
+  //     (a) already printed,
+  //     (b) in remaining, or
+  //     (c) in or below a node in remaining
+  while (!remaining.isEmpty()) {
+    Object next = remaining.pop();
+    if (next instanceof BinaryTreeNode<?>) {
+      @SuppressWarnings("unchecked")
+      BinaryTreeNode<T> node = (BinaryTreeNode<T>) next;
+      if (node.left != null) {
+        remaining.push(node.left);
+      } // if (node.left != null)
+      remaining.push(node.value);
+      if (node.right != null) {
+        remaining.push(node.right);
+      } // if (node.right != null)
+      
+      
+    } else {
+      pen.print(next);
+      pen.print(" ");
+    } // if/else
+  } // while
+  pen.println();
+} // print(PrintWriter)
 
   // +---------+-----------------------------------------------------
   // | Helpers |

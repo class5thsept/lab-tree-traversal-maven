@@ -26,6 +26,9 @@ public class BinaryTreeExperiments {
     BinaryTree<String> tree = new BinaryTree<String>(strings);
 
     tree.dump(pen);
+
+    tree.print(pen);
+
     pen.close();
   } // main
 } // class BinaryTreeExperiments
